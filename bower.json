@@ -1,0 +1,19 @@
+{
+  "name": "stxmuzyka",
+  "version": "0.0.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.0.3",
+    "bootstrap": "~3.0.3",
+    "angular": "~1.2.5",
+    "restangular": "~1.2.1",
+    "font-awesome": "~4.0.3"
+  }
+}

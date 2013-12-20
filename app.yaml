@@ -1,0 +1,68 @@
+application: stxmuzyka
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: markupsafe
+  version: latest
+- name: jinja2
+  version: latest
+- name: webapp2
+  version: latest
+- name: lxml
+  version: latest
+- name: pycrypto
+  version: latest
+
+inbound_services:
+  - warmup
+
+builtins:
+- deferred: on
+- appstats: on
+- remote_api: on
+
+handlers:  
+- url: /static
+  static_dir: static
+  secure: optional
+
+- url: /cron.*
+  script: core.cron.app
+  secure: always
+  login: admin
+
+- url: /jobs.*
+  script: core.jobs.app
+  secure: always
+  login: admin
+
+- url: /admin.*
+  script: core.main.app
+  secure: always
+  login: admin
+
+- url: /.*
+  script: core.main.app
+
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?.*\.less$
+- ^(.*/)?.*\.spec$
+- ^(.*/)?README\.md$
+- ^(.*/)?LICENSE$
+- ^(.*/)?Makefile$
+- ^(.*/)?node_modules
+- ^(.*/)?assets
+- ^(.*/)?ngminned

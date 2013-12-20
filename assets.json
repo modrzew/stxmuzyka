@@ -1,0 +1,22 @@
+{
+    "jsApp": [
+        "assets/coffee/src/main.coffee",
+        "assets/coffee/src/**/*.coffee"
+    ],
+
+    "jsVendor": [
+        "bower_components/lodash/dist/lodash.min.js",
+        "bower_components/jquery/jquery.min.js",
+        "bower_components/angular/angular.min.js",
+        "bower_components/restangular/dist/restangular.min.js",
+        "bower_components/bootstrap/dist/js/bootstrap.min.js"
+    ],
+
+    "cssVendor": [
+        "bower_components/bootstrap/dist/css/bootstrap.min.css",
+        "bower_components/font-awesome/css/font-awesome.min.css"
+    ],
+
+    "templateOutput": "assets/ngminned/templates.js",
+    "coffeeOutput": "assets/ngminned/coffee.js"
+}

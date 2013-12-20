@@ -1,0 +1,34 @@
+<h1>#stxnext-muzyka</h1>
+
+<p class="text-right text-muted">
+    <span ng-show="nextRefresh > 0">Next refresh in {{ nextRefresh }} seconds</span>
+    <span ng-show="nextRefresh <= 0">Refreshing, stay tight...</span>
+</p>
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Who</th>
+            <th>URL</th>
+            <th>Description</th>
+            <th ng-show="isAdmin">
+                Actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="result in results">
+            <td>{{ result.date }}</td>
+            <td>{{ result.time }}</td>
+            <td>{{ result.author }}</td>
+            <td><a ng-href="{{ result.url }}">{{ result.url }}</a></td>
+            <td>{{ result.info }}</td>
+            <td ng-show="isAdmin" class="text-center">
+                <button class="btn btn-danger" ng-click="remove(result)"><i class="fa fa-ban" ng-class="{'fa-spinner fa-spin': result._removing}"></i></button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p class="text-center text-muted">irc logs courtesy of pagenoare</p>
