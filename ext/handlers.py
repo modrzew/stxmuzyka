@@ -8,6 +8,9 @@ from webapp2 import RequestHandler
 import webapp2
 
 
+ORGANIZATION = 'stxnext.pl'
+
+
 class BaseHandler(RequestHandler):
     @property
     def request_json(self):
@@ -58,3 +61,8 @@ class BaseHandler(RequestHandler):
             return None
         return self.auth.store.user_model.get_by_id(
             user_dict['user_id'], namespace=namespace_manager.get_namespace())
+
+    @webapp2.cached_property
+    def authenticated_user(self):
+        user_organization = self.request.environ.get('USER_ORGANIZATION')
+        return user_organization == ORGANIZATION
