@@ -1,4 +1,4 @@
 cron:
 - description: Refresh
   url: /cron/refresh
-  schedule: every 10 minutes
+  schedule: every 30 minutes from 7:00 to 23:00

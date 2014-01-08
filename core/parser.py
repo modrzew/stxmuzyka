@@ -42,6 +42,8 @@ def parse(day):
         if not urls:
             continue
         time_author = AUTHOR_REGEX.search(line)
+        if not time_author:
+            continue
         when = None
         if time_author:
             author = time_author.group(4)

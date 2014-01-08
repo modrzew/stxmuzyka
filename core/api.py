@@ -8,7 +8,7 @@ from models import Result, Config
 
 
 # How often do we refresh?
-REFRESH_MINUTES = 10
+REFRESH_MINUTES = 30
 
 
 class ResultsHandler(BaseHandler):
@@ -26,7 +26,7 @@ class ResultsHandler(BaseHandler):
         if not results:
             results_raw = Result.query().order(-Result.when).fetch(50)
             results = [r.to_dict() for r in results_raw]
-            memcache.add('results', results, time=600)
+            memcache.add('results', results, time=1800)
         # next_refresh: seconds to next refresh
         elapsed = datetime.now() - config.last_refresh
         next_refresh = REFRESH_MINUTES * 60 - elapsed.total_seconds()
